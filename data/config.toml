@@ -1,0 +1,39 @@
+[settings.okx]
+api_key     = ''
+api_secret  = ''
+password    = ''
+
+[settings.bitget]
+api_key     = ''
+api_secret  = ''
+password    = ''
+
+[settings.binance]
+api_key     = ''
+api_secret  = ''
+password    = ''
+
+[settings.mexc]
+api_key     = ''
+api_secret  = ''
+
+[settings.bybit]
+api_key     = ''
+api_secret  = ''
+
+[settings.gate]
+api_key     = ''
+api_secret  = ''
+
+[settings.kucoin]
+api_key     = ''
+api_secret  = ''
+password    = ''
+
+[settings.htx]
+api_key     = ''
+api_secret  = ''
+
+[settings.coinex]
+api_key     = ''
+api_secret  = ''
