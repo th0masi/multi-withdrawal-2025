@@ -3,7 +3,8 @@ from core.exchange import Exchange
 
 class Okx(Exchange):
     uses_funding_wallet = True
-
+    include_fee_in_params = True
+    
     @property
     def name(self) -> str:
         return "okx"
