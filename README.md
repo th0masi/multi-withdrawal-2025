@@ -1,5 +1,6 @@
 ## :whale: Multi Withdrawal
-![Screenshot](https://i.imgur.com/pfc7wFG.png)  
+
+<img src="https://i.imgur.com/UZz7g95.png" width="100%"/>
 
 | Биржа                     | Доступность        | Определение min amount | Определение fee  |
 | :---                      | :---:              |   :---:              | :---:              | 
@@ -30,6 +31,7 @@
 
 1. Поместите в файл `data/wallets.txt` список кошельков
 2. Укажите API-ключи в `data/config.toml`
+3. Запускайте скрипт через <b>терминал командой</b> `python main.py`
 
 ## :money_with_wings: Донаты
 
