@@ -3,6 +3,7 @@ from core.exchange import Exchange
 
 class Binance(Exchange):
     include_fee_in_params = True
+    network_param_name = "network"
 
     @property
     def name(self) -> str:
