@@ -248,8 +248,8 @@ def select_chain(
     available_chains = [
         {
             "name": (
-                f"{chain} (ком.: {details['withdrawFee']}, "
-                f"мин. сумма: {details['withdrawMin']})"
+                f"{chain} (ком.: {format_amount(details['withdrawFee'])}, "
+                f"мин. сумма: {format_amount(details['withdrawMin'])})"
             ),
             "chainKey": chain,
             "chainId": details["chainId"],
@@ -270,3 +270,6 @@ def select_chain(
              } for chain in available_chains],
     ).ask()
     return choice
+
+def format_amount(n):
+    return f"{n:.5f}".rstrip('0').rstrip('.')
