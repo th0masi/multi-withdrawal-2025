@@ -127,14 +127,8 @@ class Exchange(ABC):
         if self.token in self.exchange.currencies:
             networks = self.exchange.currencies[self.token].get("networks", {})
             for key, info in networks.items():
-                withdraw_fee = self._get_withdraw_fee(info)
-                withdraw_min = self._get_withdraw_min(info)
-
-                if withdraw_fee is None:
-                    withdraw_fee = 0.0
-
-                if withdraw_min is None:
-                    withdraw_min = 0
+                withdraw_fee = float(self._get_withdraw_fee(info) or 0)
+                withdraw_min = float(self._get_withdraw_min(info) or 0)
 
                 if self._is_withdrawal_enabled(key, info):
                     chains_info[key] = {
