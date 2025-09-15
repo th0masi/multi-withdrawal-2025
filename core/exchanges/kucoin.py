@@ -9,4 +9,8 @@ class Kucoin(Exchange):
         return "kucoin"
 
     def _is_withdrawal_enabled(self, key, info):
-        return info["info"].get("withdrawEnable")
+        info_dict = info.get("info", {})
+        return bool(
+            info.get("withdraw", info_dict.get("isWithdrawEnabled",
+                   info_dict.get("withdrawEnable", False)))
+        )
