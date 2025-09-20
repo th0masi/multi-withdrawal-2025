@@ -272,4 +272,35 @@ def select_chain(
     return choice
 
 def format_amount(n):
-    return f"{n:.5f}".rstrip('0').rstrip('.')
+    """Возвращает число без экспоненты, до 10 знаков после запятой."""
+    try:
+        from decimal import Decimal, InvalidOperation, localcontext
+        d = Decimal(str(n))
+        with localcontext() as ctx:
+            ctx.prec = 30
+            s = format(d, 'f')
+        if '.' in s:
+            neg = s.startswith('-')
+            if neg:
+                s_body = s[1:]
+            else:
+                s_body = s
+            int_part, frac = s_body.split('.')
+            frac = frac.rstrip('0')
+            if len(frac) > 10:
+                frac = frac[:10]
+                frac = frac.rstrip('0')
+            if frac == '':
+                out = int_part
+            else:
+                out = int_part + '.' + frac
+            if neg:
+                out = '-' + out
+            return out
+        return s
+    except (InvalidOperation, ValueError, TypeError):
+        try:
+            x = float(n)
+            return ("%.10f" % x).rstrip('0').rstrip('.')
+        except Exception:
+            return str(n)
