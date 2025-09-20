@@ -170,7 +170,10 @@ class Exchange(ABC):
         """
         balances = self._fetch_balance()
         balance = float(balances.get("total", {}).get(self.token, 0))
-        logger.success(f"Баланс токена: {balance:.5f} ${self.token}")
+        from core.utils import format_amount
+        logger.success(
+            f"Баланс токена: {format_amount(balance)} ${self.token}"
+        )
         self._check_enough_balance(balance, num_wallets)
         return balance
 
@@ -294,3 +297,4 @@ class Exchange(ABC):
     @staticmethod
     def _extract_withdrawal_id(withdrawal: Dict) -> str:
         return withdrawal.get("id", withdrawal.get("info", {}).get("wdId", ""))
+
